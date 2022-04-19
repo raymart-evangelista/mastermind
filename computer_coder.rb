@@ -7,7 +7,7 @@ class Computer
   def initialize
     @all_colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white', 'black']
     @colors = all_colors.sample(4)
-    puts "The computer has chosen 4 unique colors."
-    p @colors
+    # puts "The computer has chosen 4 unique colors."
+    # p @colors
   end
 end

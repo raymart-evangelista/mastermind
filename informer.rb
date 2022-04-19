@@ -1,26 +1,26 @@
 module Inform
   def print_overview
     puts "----------------------------------------------"
-    puts "Mastermind is a game where one player is a coder and another player is a decoder."
-    puts "In this version of Mastermind, the computer coder will place four colors in a wanted order."
-    puts "You will be the decoder who must guess your oppoent's secret code within a certain number of turns."
+    puts "\tMastermind is a game where one player is a coder and another player is a decoder."
+    puts "\tIn this version of Mastermind, the computer coder will place four colors in a wanted order."
+    puts "\tYou will be the decoder who must guess your oppoent's secret code within a certain number of turns."
     puts "----------------------------------------------"
-    puts "You will receive feedback about how good your guess was in terms of: "
-    puts "\twhether a guess was exactly correct, counted in 'Matches'."
-    puts "\twhether a guess was correct but in the wrong space, counted in 'Partial Matches'."
-    puts "If a guess didn't meet either of those two criteria (in other words, the color is incorrect), it won't be counted."
+    puts "\tYou will receive feedback about how good your guess was in terms of: "
+    puts "\t\twhether a guess was exactly correct, counted in 'Matches'."
+    puts "\t\twhether a guess was correct but in the wrong space, counted in 'Partial Matches'."
+    puts "\tIf a guess didn't meet either of those two criteria (in other words, the color is incorrect), it won't be counted."
     puts "----------------------------------------------"
-    puts "For example, the computer chooses the colors ['red', 'green', 'blue', 'white']."
-    puts "You choose to guess ['red', 'blue', 'black', 'green']."
-    puts "You will receive the feedback: "
-    puts "\tMatches: 1"
-    puts "\tPartial Matches: 2"
+    puts "\tFor example, the computer chooses the colors ['red', 'green', 'blue', 'white']."
+    puts "\tYou choose to guess ['red', 'blue', 'black', 'green']."
+    puts "\tYou will receive the feedback: "
+    puts "\t\tMatches: 1"
+    puts "\t\tPartial Matches: 2"
     puts "----------------------------------------------"
   end
 
   def print_colors(colors)
     puts "----------------------------------------------"
-    puts "These are the colors you can choose from: \n\t#{colors}"
+    puts "\tThese are the colors you can choose from: \n\t#{colors}\n\n"
   end
 
   def print_round(round, total_rounds)
@@ -28,7 +28,7 @@ module Inform
   end
   
   def print_feedback(matches, partial)
-    puts "\tMatches: #{matches}"
+    puts "\n\tMatches: #{matches}"
     puts "\tPartial Matches: #{partial}"
   end
 end
