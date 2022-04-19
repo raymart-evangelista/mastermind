@@ -20,7 +20,6 @@ class Game
   def start_round
     while @current_round < @total_rounds && @all_matched == false
       @current_round += 1
-      puts "----------------------------------------------"
       print_round(@current_round, @total_rounds)
       print_colors(@opponent.all_colors)
       user_input = false

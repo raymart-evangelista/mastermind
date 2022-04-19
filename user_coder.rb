@@ -1,0 +1,2 @@
+class UserCoder
+end
