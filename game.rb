@@ -43,7 +43,6 @@ class Game
       @amount_colors_chosen = 1
       @user.colors = []
 
-      
     end
 
     if @all_matched == false
@@ -53,7 +52,6 @@ class Game
       puts "The computer's chosen colors were: #{@opponent.colors}"
     end
 
-
   end
 
   def fully_matched?(user_colors, opponent_colors)
@@ -62,19 +60,6 @@ class Game
 
     # calculate matches and partial matches
     opponent_colors.each_index do |index|
-      # puts "#{opponent_colors[index]} #{user_colors[index]}"
-      # matches += 1 if opponent_colors[index].eql?(user_colors[index])
-      # partial_matches += 1 if opponent_colors.include?(user_colors[index])
-      
-      # new comparison logic
-      # if opponent_colors.include?(user_colors[index])
-      #   if opponent_colors[index].eql?(user_colors[index])
-      #     matches += 1
-      #   else
-      #     partial_matches += 1
-      #   end
-      # end
-
       if user_colors.include?(opponent_colors[index])
         if user_colors[index].eql?(opponent_colors[index])
           matches += 1
@@ -83,8 +68,6 @@ class Game
         end
       end
     end
-
-    # partial_matches -= matches
 
     print_feedback(matches, partial_matches)
 
