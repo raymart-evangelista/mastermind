@@ -6,29 +6,28 @@ class Game
 
   include Inform
 
-  @@total_rounds = 12
-  @@total_colors = 4
-
   def initialize(user, opponent)
     @user = user
     @opponent = opponent
     @current_round = 0
     @amount_colors_chosen = 1
     @all_matched = false
-    Inform.print_overview
+    print_overview
+    @total_rounds = 12
+    @total_colors = 4
   end
 
   def start_round
-    while @current_round < @@total_rounds && @all_matched == false
+    while @current_round < @total_rounds && @all_matched == false
       @current_round += 1
       puts "----------------------------------------------"
-      Inform.print_round(@current_round, @@total_rounds)
-      Inform.print_colors(@opponent.all_colors)
+      print_round(@current_round, @total_rounds)
+      print_colors(@opponent.all_colors)
       user_input = false
 
-      until @amount_colors_chosen > @@total_colors
-        until @opponent.all_colors.include?(user_input) && @user.colors.one?(user_input) == false
-          puts "Please choose color #{@amount_colors_chosen} of #{@@total_colors} that you did not pick yet: "
+      until @amount_colors_chosen > @total_colors
+        until @opponent.all_colors.include?(user_input)
+          puts "Please choose color #{@amount_colors_chosen} of #{@total_colors}:"
           user_input = gets.chomp.downcase
           # p user_input
         end
@@ -64,13 +63,30 @@ class Game
     # calculate matches and partial matches
     opponent_colors.each_index do |index|
       # puts "#{opponent_colors[index]} #{user_colors[index]}"
-      matches += 1 if opponent_colors[index].eql?(user_colors[index])
-      partial_matches += 1 if opponent_colors.include?(user_colors[index])
+      # matches += 1 if opponent_colors[index].eql?(user_colors[index])
+      # partial_matches += 1 if opponent_colors.include?(user_colors[index])
+      
+      # new comparison logic
+      # if opponent_colors.include?(user_colors[index])
+      #   if opponent_colors[index].eql?(user_colors[index])
+      #     matches += 1
+      #   else
+      #     partial_matches += 1
+      #   end
+      # end
+
+      if user_colors.include?(opponent_colors[index])
+        if user_colors[index].eql?(opponent_colors[index])
+          matches += 1
+        else
+          partial_matches += 1
+        end
+      end
     end
 
-    partial_matches -= matches
+    # partial_matches -= matches
 
-    Inform.print_feedback(matches, partial_matches)
+    print_feedback(matches, partial_matches)
 
     if matches == 4
       return true

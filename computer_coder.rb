@@ -1,13 +1,14 @@
 require "./informer.rb"
-include Inform
 
-class Computer
+# ComputerCoder class is used to create a code the user must decode
+class ComputerCoder
+
+  include Inform
 
   attr_reader :all_colors, :colors
+
   def initialize
-    @all_colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white', 'black']
-    @colors = all_colors.sample(4)
-    # puts "The computer has chosen 4 unique colors."
-    # p @colors
+    @all_colors = %w[red orange yellow green blue purple white black]
+    @colors = 4.times.map { all_colors.sample }
   end
 end

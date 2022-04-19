@@ -31,4 +31,5 @@ module Inform
     puts "\n\tMatches: #{matches}"
     puts "\tPartial Matches: #{partial}"
   end
+
 end

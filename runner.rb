@@ -6,7 +6,6 @@ require "./user_decoder.rb"
 require "./game.rb"
 
 user = User.new
-opponent = Computer.new
+opponent = ComputerCoder.new
 game = Game.new(user, opponent)
 game.start_round
-# game.start_round
