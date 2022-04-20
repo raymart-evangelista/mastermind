@@ -5,7 +5,27 @@ require "./user_coder.rb"
 require "./user_decoder.rb"
 require "./game.rb"
 
-user = UserDecoder.new
-opponent = ComputerCoder.new
-game = Game.new(user, opponent)
-game.start_round
+# Main is used to run the Mastermind program
+class Main
+  include Inform
+
+  def self.start_mastermind
+    choice = Inform.print_choices
+    case choice
+    when "decode"
+      user = UserDecoder.new
+      opponent = ComputerCoder.new
+      game = Game.new(user, opponent)
+      game.start_decoder
+    when "code"
+      puts "inside code case block"
+      user = UserCoder.new
+      opponent = ComputerDecoder.new
+      game = Game.new(user, opponent)
+      game.start_coder
+    end
+  end
+end
+
+Main.start_mastermind
+

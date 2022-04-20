@@ -1,4 +1,7 @@
 module Inform
+
+  @user_choice = ""
+
   def print_overview
     puts "\t|-----------------------------------------------------------------------------------------------|"
     puts "\t|Mastermind is a game where one player is a coder and another player is a decoder.              |"
@@ -35,5 +38,13 @@ module Inform
   def print_feedback(matches, partial)
     puts "\n\tMatches: #{matches}"
     puts "\tPartial Matches: #{partial}"
+  end
+
+  def self.print_choices
+    until @user_choice == "decode" || @user_choice == "code" do
+      puts "Would you like to decode or code?: "
+      @user_choice = gets.chomp
+    end
+    @user_choice
   end
 end

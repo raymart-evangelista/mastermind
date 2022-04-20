@@ -9,6 +9,7 @@ class ComputerCoder
 
   def initialize
     @all_colors = %w[red orange yellow green blue purple white black]
-    @colors = 4.times.map { all_colors.sample }
+    #@colors = 4.times.map { all_colors.sample }
+    @colors = %w[orange yellow yellow orange]
   end
 end

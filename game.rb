@@ -17,24 +17,14 @@ class Game
     @total_colors = 4
   end
 
-  def start_round
+  def start_decoder
     while @current_round < @total_rounds && @all_matched == false
       @current_round += 1
       print_round(@current_round, @total_rounds)
       print_colors(@opponent.all_colors)
-      user_input = false
 
-      until @amount_colors_chosen > @total_colors
-        until @opponent.all_colors.include?(user_input)
-          puts "Please choose color #{@amount_colors_chosen} of #{@total_colors}:"
-          user_input = gets.chomp.downcase
-          # p user_input
-        end
-        @user.colors.push(user_input)
-        user_input = false
-        @amount_colors_chosen += 1
+      choose_colors
 
-      end
       # check the matching between user and opponent
       @all_matched = fully_matched?(@user.colors, @opponent.colors)
 
@@ -46,6 +36,7 @@ class Game
 
     if @all_matched == false
       puts "You did not decode the computer's chosen colors in time!"
+      puts "The computer's chosen colors were: #{@opponent.colors}"
     else
       puts "You successfully decoded the computer's chosen colors in time!"
       puts "The computer's chosen colors were: #{@opponent.colors}"
@@ -59,7 +50,7 @@ class Game
 
     # calculate matches and partial matches
     opponent_colors.each_index do |index|
-      if user_colors.include?(opponent_colors[index])
+      if opponent_colors.include?(user_colors[index])
         if user_colors[index].eql?(opponent_colors[index])
           matches += 1
         else
@@ -78,4 +69,22 @@ class Game
       
   end
 
+  def start_coder
+  end
+
+  def choose_colors
+    user_input = false
+    until @amount_colors_chosen > @total_colors
+      until @opponent.all_colors.include?(user_input)
+        puts "Please choose color #{@amount_colors_chosen} of #{@total_colors}:"
+        user_input = gets.chomp.downcase
+        # p user_input
+      end
+      @user.colors.push(user_input)
+      user_input = false
+      @amount_colors_chosen += 1
+
+    end
+    
+  end
 end
