@@ -2,13 +2,13 @@ module Inform
 
   @user_choice = ""
 
-  def print_overview
+  def self.print_overview
     puts "\t|-----------------------------------------------------------------------------------------------|"
     puts "\t|Mastermind is a game where one player is a coder and another player is a decoder.              |"
     puts "\t|You can choose to be either the coder or the decoder.                                          |"
     puts "\t|If you choose to be the decoder, the computer coder will place four colors in a wanted order.  |"
     puts "\t|You must guess your oppoent's secret code within a certain number of turns.                    |"
-    puts "\t|-----------------------------------------------------------------------------------------------|"
+    puts "\t|                                                                                               |"
     puts "\t|You will receive feedback about how good your guess was in terms of:                           |"
     puts "\t|  whether a guess was exactly correct, counted in 'Matches'.                                   |"
     puts "\t|  whether a guess was correct but in the wrong space, counted in 'Partial Matches'.            |"
@@ -20,6 +20,10 @@ module Inform
     puts "\t|  Matches: 1                                                                                   |"
     puts "\t|  Partial Matches: 2                                                                           |"
     puts "\t|-----------------------------------------------------------------------------------------------|"
+    puts "\t|If you choose to be the coder, you will choose four colors that the computer will decode.      |"
+    puts "\t|The computer will get a certain number of turns to decode your code.                           |"
+    puts "\t|-----------------------------------------------------------------------------------------------|"
+
   end
 
   def print_colors(colors)

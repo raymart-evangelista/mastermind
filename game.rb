@@ -12,7 +12,6 @@ class Game
     @current_round = 0
     @amount_colors_chosen = 1
     @all_matched = false
-    print_overview
     @total_rounds = 12
     @total_colors = 4
   end
@@ -44,14 +43,14 @@ class Game
 
   end
 
-  def fully_matched?(user_colors, opponent_colors)
+  def fully_matched?(decoder_colors, coder_colors)
     matches = 0
     partial_matches = 0
 
     # calculate matches and partial matches
-    opponent_colors.each_index do |index|
-      if opponent_colors.include?(user_colors[index])
-        if user_colors[index].eql?(opponent_colors[index])
+    coder_colors.each_index do |index|
+      if coder_colors.include?(decoder_colors[index])
+        if decoder_colors[index].eql?(coder_colors[index])
           matches += 1
         else
           partial_matches += 1
@@ -70,6 +69,18 @@ class Game
   end
 
   def start_coder
+    while @current_round < @total_rounds && @all_matched == false
+      @current_round += 1
+      print_round(@current_round, @total_rounds)
+      @opponent.choose_colors
+      puts "The opponent chose #{@opponent.colors}"
+      @all_matched = fully_matched?(@opponent.colors, @user.colors)
+      # reset amount of colors chosen and user colors chosen
+      @opponent.colors = []
+    end
+
+    # compare
+    
   end
 
   def choose_colors

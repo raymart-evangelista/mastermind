@@ -10,6 +10,7 @@ class Main
   include Inform
 
   def self.start_mastermind
+    Inform.print_overview
     choice = Inform.print_choices
     case choice
     when "decode"
@@ -18,11 +19,11 @@ class Main
       game = Game.new(user, opponent)
       game.start_decoder
     when "code"
-      puts "inside code case block"
       user = UserCoder.new
       opponent = ComputerDecoder.new
       game = Game.new(user, opponent)
       game.choose_colors
+      game.start_coder
     end
   end
 end
