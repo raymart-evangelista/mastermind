@@ -79,7 +79,11 @@ class Game
       @opponent.colors = []
     end
 
-    # compare
+    if @all_matched == false
+      puts "The computer did not decode your chosen colors in time!"
+    else
+      puts "Oh no! Your code was decoded by the computer in time!"
+    end
     
   end
 
