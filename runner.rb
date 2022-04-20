@@ -22,7 +22,7 @@ class Main
       user = UserCoder.new
       opponent = ComputerDecoder.new
       game = Game.new(user, opponent)
-      game.start_coder
+      game.choose_colors
     end
   end
 end

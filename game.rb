@@ -83,7 +83,6 @@ class Game
       @user.colors.push(user_input)
       user_input = false
       @amount_colors_chosen += 1
-
     end
     
   end
